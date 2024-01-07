@@ -16,10 +16,10 @@ namespace DB.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "6.0.25")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("DB.Beer", b =>
                 {
@@ -27,7 +27,7 @@ namespace DB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BeerID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BeerID"), 1L, 1);
 
                     b.Property<int>("BrandID")
                         .HasColumnType("int");
@@ -45,17 +45,17 @@ namespace DB.Migrations
 
             modelBuilder.Entity("DB.Brand", b =>
                 {
-                    b.Property<int>("BrandId")
+                    b.Property<int>("BrandID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BrandId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BrandID"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BrandId");
+                    b.HasKey("BrandID");
 
                     b.ToTable("Brands");
                 });

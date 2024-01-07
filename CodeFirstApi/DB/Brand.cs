@@ -10,9 +10,9 @@ namespace DB
 {
     public class Brand
     {
-        [Key] // Especificamos que BrandId es la primary key
+        [Key] // Especificamos que BrandID es la primary key
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // Indicamos que es autoincremental
-        public int BrandId { get; set; }
+        public int BrandID { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Beer> Beers { get; set; }
     }

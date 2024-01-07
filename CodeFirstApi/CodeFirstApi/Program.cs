@@ -11,17 +11,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<BarContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BarConnection")); // Asociamos la base de datos con el proyecto
-});
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BarConnection")) // Asociamos la base de datos con el proyecto
+);
 
 var app = builder.Build();
 
 /*
-using (var scope = app.Services.CreateScope())
+using (var scope = app.Services.CreateScope()) // Nos permite acceder a componentes especiales de la aplicación
 {
     var context = scope.ServiceProvider.GetRequiredService<BarContext>();
-    context.Database.Migrate(); // Hace que se cree la base de datos y las tablas especificadas en BarContext. También aplica los cambios en caso de que se hayan hecho
+    context.Database.Migrate(); // Hace que se creen en la base de datos las tablas especificadas en BarContext. Creo que también aplica los cambios en caso de que se hayan hecho
 }
 */
 
